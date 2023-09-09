@@ -3,14 +3,14 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 from utils import *
 
-########## Title for the Web App ##########
-st.title("Text Classification for Service Feedback")
 
-########## Create Input field ##########
-feedback = st.text_input('Type your text here', 'The website was user friendly and the agent provided good solutions')
+st.title("Service Feedback Dashboard")
 
-if st.button('Click for predictions!'):
-    with st.spinner('Generating predictions...'):
+
+feedback = st.text_input('Type your text here for demo', 'The website was user friendly and the agent provided good solutions')
+
+if st.button('Click for Classifications'):
+    with st.spinner('Generating predictions & graph...'):
         
         topics_prob, sentiment_prob = get_single_prediction(feedback)
         
@@ -29,7 +29,7 @@ if st.button('Click for predictions!'):
     st.plotly_chart(pie, use_container_width=True)
 
 st.write("\n")    
-st.subheader('Or... Upload a csv file if you have a file instead.')
+st.subheader('Or... Upload a .csv file if you have a file instead for large tasks')
 st.write("\n")
 
 st.download_button(
